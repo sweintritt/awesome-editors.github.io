@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="List of awesome code editors" />
+    <meta name="keywords" content="code, editor, text, awesome, list, go, java, javascript, python" />
+    <meta name="author" content="Stephan Weintritt" />
     <title>Awesome Code Editors</title>
     <style>
       :root,
       :root.light {
         --color-bg: #ddd;
-        -color-fg: #222;
+        --color-fg: #222;
         --color-header: seagreen;
         --color-table-header-bg: #ccc;
         --color-table-header-fg: cadetblue;
@@ -17,6 +20,7 @@
         --color-search-fg: darkcyan;
         --color-search-border: #666;
         --color-table-hover: #ccc;
+         --color-link: indianred;
       }
 
       :root.dark {
@@ -29,6 +33,7 @@
         --color-search-fg: lightblue;
         --color-search-border: #666;
         --color-table-hover: #333;
+        --color-link: indianred;
       }
 
       body {
@@ -36,11 +41,9 @@
         background-color: var(--color-bg);
         font-family: monospace;
         font-size: 1.15em;
-        padding: .5em 3em 1em .5em;
       }
 
       table {
-        width: 100%;
         border-collapse: collapse;
         border: .2em solid #555;
         padding: 1.5em;
@@ -48,18 +51,20 @@
       }
 
       #header {
-        width: 100%;
-        display: grid;
-        border: .2em solid #555;
         padding: 1.5em;
         margin: 1em;
+        display: grid;
+        border: .2em solid #555;
         grid-template-columns: auto auto auto;
-        padding: 8px;
         text-align: left;
-        padding: 1.15em;
         color: var(--color-table-header-fg);
         background-color: var(--color-table-header-bg);
         font-weight: bold;
+      }
+
+      a {
+        color: var(--color-link);
+        text-decoration: none;
       }
 
       th,
@@ -97,23 +102,24 @@
       }
 
       #search {
-        margin-bottom: 1em;
         padding: 5px;
         background-color: var(--color-search-bg);
         color: var(--color-search-fg);
         font-weight: bold;
         border: 2px solid var(--color-search-border);
       }
-
-      /* TODO Make it look like this https://nerdbude.com/imprint/ */
     </style>
   </head>
   <body onload="onLoad();">
-    <div id="header">
-        <div><h3>Awesome Code Editors</h3></div>
-        <div><input type="text" id="search" onkeyup="filter()" placeholder="Search.." /></div>
-        <div>light <span id="lightswitch" onclick="toggleLight()">[ X ]</span></div>
-    </div>
+    <table id="header">
+      <thead>
+      <tr>
+        <th><h3>Awesome Code Editors</h3>List of awesome code editors</th>
+        <th><input type="text" id="search" onkeyup="filter()" placeholder="Search.." /></th>
+        <th><span id="lightswitch" onclick="toggleLight()">light [X]</span></th>
+      </tr>
+      </thead>
+    </table>
     <div id="data" />
   </body>
 
@@ -123,6 +129,7 @@
     data = [
       {
         name: "vim",
+        description: "One of the two classic highly configurable and extensible terminal based text editors",
         link: "https://www.vim.org/",
         repository: "https://github.com/vim/vim",
         "written in": "C, vimscript",
@@ -136,6 +143,7 @@
         license: "GPL-compatible",
       },{
         name: "Emacs",
+        description: "The other one of the two classic highly configurable and extensible terminal based text editors",
         link: "https://www.gnu.org/software/emacs/",
         repository: "https://cgit.git.savannah.gnu.org/cgit/emacs.git",
         "written in": "C, Emacs lisp",
@@ -149,6 +157,7 @@
         license: "GPL",
       }, {
         name: "micro",
+        description: "A modern and intuitive terminal-based text editor",
         link: "https://micro-editor.github.io/",
         repository: "https://github.com/zyedidia/micro",
         "written in": "Go, Lua",
@@ -162,6 +171,7 @@
         license: "MIT",
       }, {
         name: "Kakoune ",
+        description: "A code editor with a strong focus on interactivity and multiple selections",
         link: "https://kakoune.org/",
         repository: "https://github.com/mawww/kakoune",
         "written in": "C++, KakouneScript",
@@ -175,6 +185,7 @@
         license: "Unilicense",
       }, {
         name: "Helix ",
+        description: "A post-modern modal text editor inspired by Kakoune and Neovim",
         link: "https://helix-editor.com/",
         repository: "https://github.com/helix-editor/helix",
         "written in": "Rust",
@@ -188,6 +199,7 @@
         license: "MPL.2.0",
       }, {
         name: "editor",
+        description: "A simple and fast GUI text editor inspired by the acme editor from Plan 9",
         link: "https://github.com/jmigpin/editor",
         repository: "https://github.com/jmigpin/editor",
         "written in": "Go",
@@ -199,11 +211,26 @@
         "first release": "1.0.0 (2020-01-03)",
         "latest release": "3.12.0 (2025-08-13)",
         license: "MIT",
+      }, {
+        name: "kilo (in Go)",
+        description: "A small and simple terminal-based text editor written in a single file with just 1000 lines of Go",
+        link: "https://github.com/bediger4000/kilo-in-go",
+        repository: "https://github.com/bediger4000/kilo-in-go",
+        "written in": "Go",
+        "gui or terminal": "terminal",
+        modes: "no",
+        lsp: "no",
+        ai: "no",
+        plugins: "no",
+        "first release": "2017-07-17",
+        "latest release": "2017-07-17",
+        license: "none",
       }
       
       /* Copy for a new entry
       , {
         name: "",
+        description: "",
         link: "",
         repository: "",
         "written in": "",
@@ -236,9 +263,11 @@
       // Creating table head
       let row = tableHead.insertRow();
       Object.keys(data[0]).forEach((key) => {
-        let th = document.createElement("th");
-        th.textContent = key.toUpperCase();
-        row.appendChild(th);
+        if (key != "link") {
+          let th = document.createElement("th");
+          th.textContent = key.toUpperCase();
+          row.appendChild(th);
+        }
       });
 
       // TODO Make sure keys do not have to be in the same order
@@ -246,34 +275,28 @@
       data.forEach((item) => {
         let row = tableBody.insertRow();
         Object.keys(item).forEach((key) => {
-          let cell = row.insertCell();
-          let value = item[key];
-          console.log("key:" + key + ", value:" + value);
-          if (key === "repository") {
-            console.log("creating repo link")
-            let a = document.createElement("a");
-            a.href = value;
-            a.title = "Link to repository"
-            a.appendChild(document.createTextNode("repo"));
-            cell.appendChild(a);
-            // cell.textContent = value
-          } else if (key === "link") {
-            console.log("creating link")
-            let a = document.createElement("a");
-            a.href = value;
-            a.title = "Link to project"
-            a.appendChild(document.createTextNode("web"));
-            cell.appendChild(a);
-          } else {
-            cell.textContent = value;
+          if (key !== 'link') {
+            let cell = row.insertCell();
+            let value = item[key];
+            if (key === "name") {
+              let a = document.createElement("a");
+              a.href = item["link"];
+              a.target = "_blank";
+              a.title = "Link to project"
+              a.appendChild(document.createTextNode(value));
+              cell.appendChild(a);
+            } else if (key === "repository") {
+              let a = document.createElement("a");
+              a.href = value;
+              a.target = "_blank";
+              a.title = "Link to repository"
+              a.appendChild(document.createTextNode("repo"));
+              cell.appendChild(a);
+            } else {
+              cell.textContent = value;
+            }
           }
-        });
-        /*
-        Object.values(item).forEach((value) => {
-          let cell = row.insertCell();
-          console.log("keys:" + Object.keys(item) + ", value:" + value);
-          cell.textContent = value;
-        });*/
+          });
       });
 
       document.getElementById("data").appendChild(table);
@@ -314,12 +337,12 @@
         document.documentElement.classList.remove("light");
         document.documentElement.classList.add("dark");
         mode = "dark";
-        button.innerText = "[ X ]";
+        button.innerText = "light [ ]";
       } else if (mode === "dark") {
         document.documentElement.classList.remove("dark");
         document.documentElement.classList.add("light");
         mode = "light";
-        button.innerText = "[   ]";
+        button.innerText = "light [X]";
       }
     }
   </script>
