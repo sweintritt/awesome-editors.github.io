@@ -225,6 +225,20 @@
         "first release": "2017-07-17",
         "latest release": "2017-07-17",
         license: "none",
+      }, {
+        name: "jedit",
+        description: "A programmer's text editor written in Java. It can be configured as a rather powerful IDE through the use of its plugin architecture.",
+        link: "https://www.jedit.org/",
+        repository: "https://sourceforge.net/p/jedit/jEdit/ci/master/tree/",
+        "written in": "Java",
+        "gui or terminal": "GUI",
+        modes: "no",
+        lsp: "",
+        ai: "",
+        plugins: "yes",
+        "first release": "0.2 (1998-09-02)",
+        "latest release": "5.7.0 (2024-08-03)",
+        license: "GPL",
       }
       
       /* Copy for a new entry
@@ -303,15 +317,15 @@
     }
 
     function filter() {
-      var input = document.getElementById("search");
-      var filter = input.value.toLowerCase();
-      var table = document.getElementById("data");
-      var tr = table.getElementsByTagName("tr");
+      let input = document.getElementById("search");
+      let filter = input.value.toLowerCase();
+      let table = document.getElementById("data");
+      let tr = table.getElementsByTagName("tr");
 
-      for (var i = 0; i < tr.length; i++) {
-        var tds = tr[i].getElementsByTagName("td");
+      for (let i = 0; i < tr.length; i++) {
+        let tds = tr[i].getElementsByTagName("td");
         if (tds.length > 0) {
-          var value = getLineText(tds);
+          let value = getLineText(tds);
           console.log("value:" + value);
           if (value.indexOf(filter) > -1) {
             tr[i].style.display = "";
@@ -323,15 +337,15 @@
     }
 
     function getLineText(tds) {
-      var result = "";
-      for (var i = 0; i < tds.length; i++) {
+      let result = "";
+      for (let i = 0; i < tds.length; i++) {
         result += tds[i].textContent || td[i].innerText;
       }
       return result.toLowerCase();
     }
 
     function toggleLight() {
-      var button = document.getElementById("lightswitch");
+      let button = document.getElementById("lightswitch");
 
       if (mode === "light") {
         document.documentElement.classList.remove("light");
