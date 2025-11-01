@@ -101,6 +101,12 @@
         color: var(--color-header);
       }
 
+      @media only screen and (max-width: 900px) {
+          .optional {
+              display: none;
+          }
+      }
+
       #search {
         padding: 5px;
         background-color: var(--color-search-bg);
@@ -154,7 +160,7 @@
         plugins: "yes",
         "first release": "0.1.0 (2015-01-01)",
         "latest release": "0.11.4 (2025-08-31)",
-        license: "Apache 2.0",
+        license: "Apachev2",
       }, {
         name: "Emacs",
         description: "The other one of the two classic highly configurable and extensible terminal based text editors",
@@ -168,7 +174,7 @@
         plugins: "yes",
         "first release": "(1984)",
         "latest release": "30.2 (2025-08-16)",
-        license: "GPL",
+        license: "GPLv3",
       }, {
         name: "micro",
         description: "A modern and intuitive terminal-based text editor",
@@ -210,7 +216,7 @@
         plugins: "no",
         "first release": "0.02 (2021-05-21)",
         "latest release": "25.07.1 (2025-07-18)",
-        license: "MPL.2.0",
+        license: "MPLv2",
       }, {
         name: "editor",
         description: "A simple and fast GUI text editor inspired by the acme editor from Plan 9",
@@ -252,7 +258,7 @@
         plugins: "yes",
         "first release": "0.2 (1998-09-02)",
         "latest release": "5.7.0 (2024-08-03)",
-        license: "GPL",
+        license: "GPLv2",
       }, {
         name: "Lite XL",
         description: "A lightweight text editor written in Lua.",
@@ -266,7 +272,7 @@
         plugins: "yes",
         "first release": "1.0 (2019-12-28)",
         "latest release": "2.1.8 (2025-06-09)",
-        license: "",
+        license: "MIT",
       }, {
         name: "Geany",
         description: "A small and lightweight IDE",
@@ -280,7 +286,7 @@
         plugins: "yes",
         "first release": "0.4.0 (2005-12-21)",
         "latest release": "2.1 (2025-07-06)",
-        license: "",
+        license: "GPLv2",
       }
       
       /* Copy for a new entry
@@ -326,6 +332,7 @@
         }
       });
 
+      let w = window.innerWidth;
       // TODO Make sure keys do not have to be in the same order
       // Creating table body
       data.forEach((item) => {
@@ -350,6 +357,10 @@
               cell.appendChild(a);
             } else {
               cell.textContent = value;
+              if (["modes", "lsp", "plugins", "latest release"].includes(key)) {
+                // TODO: Optional also for table headers
+                cell.classList.add("optional");
+              }
             }
           }
           });
