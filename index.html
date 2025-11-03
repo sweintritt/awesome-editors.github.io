@@ -45,6 +45,7 @@
 
       table {
         border-collapse: collapse;
+        grid-template-columns: auto auto auto;
         border: .2em solid #555;
         padding: 1.5em;
         margin: 1em;
@@ -101,12 +102,17 @@
         color: var(--color-header);
       }
 
-      @media only screen and (max-width: 900px) {
-          .optional {
+      @media only screen and (max-width: 1325px) {
+          .optional1 {
               display: none;
           }
       }
 
+      @media only screen and (max-width: 885px) {
+          .optional2 {
+              display: none;
+          }
+      }
       #search {
         padding: 5px;
         background-color: var(--color-search-bg);
@@ -314,6 +320,8 @@
     }
 
     function createTable() {
+      const optionalColumns1 = ["modes", "ai", "lsp", "plugins", "first release"]
+      const optionalColumns2 = ["written in", "gui or terminal", "latest release", "license"]
       const table = document.createElement("table");
       const tableHead = document.createElement("thead");
       const tableBody = document.createElement("tbody");
@@ -328,6 +336,11 @@
         if (key != "link") {
           let th = document.createElement("th");
           th.textContent = key.toUpperCase();
+          if (optionalColumns1.includes(key)) {
+            th.classList.add("optional1");
+          } else if (optionalColumns2.includes(key)) {
+            th.classList.add("optional2");
+          }
           row.appendChild(th);
         }
       });
@@ -357,9 +370,10 @@
               cell.appendChild(a);
             } else {
               cell.textContent = value;
-              if (["modes", "lsp", "plugins", "latest release"].includes(key)) {
-                // TODO: Optional also for table headers
-                cell.classList.add("optional");
+              if (optionalColumns1.includes(key)) {
+                cell.classList.add("optional1");
+              } else if (optionalColumns2.includes(key)) {
+                cell.classList.add("optional2");
               }
             }
           }
