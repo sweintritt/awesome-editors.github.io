@@ -8,6 +8,7 @@
     <meta name="keywords" content="code, editor, text, awesome, list, go, java, javascript, python" />
     <meta name="author" content="Stephan Weintritt" />
     <title>Awesome Code Editors</title>
+    <link rel="icon" type="image/x-icon" href="icons8-code-96.png" />
     <style>
       :root,
       :root.light {
@@ -113,6 +114,7 @@
               display: none;
           }
       }
+
       #search {
         padding: 5px;
         background-color: var(--color-search-bg);
@@ -120,6 +122,12 @@
         font-weight: bold;
         border: 2px solid var(--color-search-border);
       }
+
+     #footer {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+     }
     </style>
   </head>
   <body onload="onLoad();">
@@ -132,11 +140,18 @@
       </tr>
       </thead>
     </table>
-    <div id="data" />
+ 
+    <div id="data">
+      editors
+    </div>
+    <div id="footer">
+      <a target="_blank" href="https://icons8.com/icon/JFVPkIT8_8bo/code">Code</a>
+      icon by
+      <a target="_blank" href="https://icons8.com">Icons8</a>
+    </div>
   </body>
 
   <script>
-    // TODO Add supported OS
     mode = "light";
     data = [
       {
@@ -151,7 +166,7 @@
         ai: "plugin",
         plugins: "yes",
         "first release": "(1991-11-02)",
-        "latest release": "9.1.1975 (2025-12-12)",
+        "latest release": "9.1.2086 (2026-01-15)",
         license: "GPL-compatible",
       }, {
         name: "neovim",
@@ -193,7 +208,7 @@
         ai: "no",
         plugins: "yes",
         "first release": "2016-08-29",
-        "latest release": "2.0.14 (2024-08-27)",
+        "latest release": "2.0.15 (2025-12-31)",
         license: "MIT",
       }, {
         name: "Kakoune ",
@@ -333,7 +348,7 @@
         ai: "plugin",
         plugins: "yes",
         "first release": "1.0 (2001-01)",
-        "latest release": "2025.2.4 (2025-10-23)",
+        "latest release": "2025.3.1.1 (2025-01-12)",
         license: "Apachev2",
       }, {
         name: "Kate",
@@ -347,7 +362,7 @@
         ai: "no",
         plugins: "yes",
         "first release": "1.0 (2001-08-15)",
-        "latest release": "25.08.0 (2025-08-14)",
+        "latest release": "25.12.1 (2026-01-06)",
         license: "LGPLv2, MIT",
       }
 
@@ -437,6 +452,7 @@
           });
       });
 
+      document.getElementById("data").replaceChildren();
       document.getElementById("data").appendChild(table);
     }
 
