@@ -53,11 +53,9 @@
       }
 
       #header {
-        padding: 1.5em;
+        padding: 1em;
         margin: 1em;
-        display: grid;
         border: .2em solid #555;
-        grid-template-columns: auto auto auto;
         text-align: left;
         color: var(--color-table-header-fg);
         background-color: var(--color-table-header-bg);
@@ -71,7 +69,6 @@
 
       th,
       td {
-        padding: 8px;
         text-align: left;
         padding: 1.15em;
       }
@@ -83,9 +80,10 @@
       }
 
       #lightswitch {
+        padding: 1em;
+        float: right;
+        font-weight: normal;
         text-align: center;
-        padding: 0.5em;
-        width: 4em;
         -webkit-user-select: none; /* Safari */
         -ms-user-select: none; /* IE 10 and IE 11 */
         user-select: none; /* Standard syntax */
@@ -99,8 +97,10 @@
         background-color: var(--color-table-hover);
       }
 
-      h3 {
+      #title {
         color: var(--color-header);
+        font-size: 1.2em;
+        font-weight: bolder;
       }
 
       @media only screen and (max-width: 1325px) {
@@ -116,6 +116,7 @@
       }
 
       #search {
+        width: 45%;
         padding: 5px;
         background-color: var(--color-search-bg);
         color: var(--color-search-fg);
@@ -128,17 +129,24 @@
         bottom: 0;
         width: 100%;
      }
+
+     #icon {
+        float: left;
+        height: 5em;
+        margin-right: 1em;
+        margin-top: 1em;
+     }
     </style>
   </head>
   <body onload="onLoad();">
-    <table id="header">
-      <thead>
-      <tr>
-        <th><h3>Awesome Code Editors</h3>List of awesome code editors. From very simple to full blown IDE.</th>
-        <th><input type="text" id="search" onkeyup="filter()" placeholder="Search.." /></th>
-        <th><span id="lightswitch" onclick="toggleLight()">light [X]</span></th>
-      </tr>
-      </thead>
+      <div id="header">
+          <span id="lightswitch" onclick="toggleLight()">light [X]</span>
+          <img id="icon" src="icons8-code-96.png">
+          <p id="title">Awesome Code Editors</p>
+          <p>List of awesome code editors. From very simple to full blown IDE.</p>
+          <br>
+          <input type="text" id="search" onkeyup="filter()" placeholder="Search..." />
+      </div>
     </table>
 
     <div id="data">
@@ -152,8 +160,8 @@
   </body>
 
   <script>
-    mode = "light";
-    data = [
+    let mode = "light";
+    let data = [
       {
         name: "vim",
         description: "One of the two classic highly configurable and extensible terminal based text editors",
@@ -481,7 +489,7 @@
         description: "Small and friendly text editor. It copies the look and feel of Pico.",
         link: "https://www.nano-editor.org/",
         repository: "https://https.git.savannah.gnu.org/git/nano.git/",
-        "written in": "C,
+        "written in": "C",
         "gui or terminal": "terminal",
         modes: "no",
         lsp: "no",
@@ -491,6 +499,10 @@
         "latest release": "9.2 (2026-07-31)",
         license: "GPLv3",
       }
+        /*
+         * TODO: add
+         *   - SciTE
+         */
       /* Copy for a new entry
       , {
         name: "",
@@ -516,8 +528,8 @@
     }
 
     function createTable() {
-      const optionalColumns1 = ["modes", "ai", "lsp", "plugins", "first release"]
-      const optionalColumns2 = ["written in", "gui or terminal", "latest release", "license"]
+      const optionalColumns1 = new Set(["modes", "ai", "lsp", "plugins", "first release"])
+      const optionalColumns2 = new Set(["written in", "gui or terminal", "latest release", "license"])
       const table = document.createElement("table");
       const tableHead = document.createElement("thead");
       const tableBody = document.createElement("tbody");
@@ -532,17 +544,15 @@
         if (key != "link") {
           let th = document.createElement("th");
           th.textContent = key.toUpperCase();
-          if (optionalColumns1.includes(key)) {
+          if (optionalColumns1.has(key)) {
             th.classList.add("optional1");
-          } else if (optionalColumns2.includes(key)) {
+          } else if (optionalColumns2.has(key)) {
             th.classList.add("optional2");
           }
           row.appendChild(th);
         }
       });
 
-      let w = window.innerWidth;
-      // TODO Make sure keys do not have to be in the same order
       // Creating table body
       data.forEach((item) => {
         let row = tableBody.insertRow();
@@ -566,9 +576,9 @@
               cell.appendChild(a);
             } else {
               cell.textContent = value;
-              if (optionalColumns1.includes(key)) {
+              if (optionalColumns1.has(key)) {
                 cell.classList.add("optional1");
-              } else if (optionalColumns2.includes(key)) {
+              } else if (optionalColumns2.has(key)) {
                 cell.classList.add("optional2");
               }
             }
@@ -590,8 +600,7 @@
         let tds = tr[i].getElementsByTagName("td");
         if (tds.length > 0) {
           let value = getLineText(tds);
-          console.log("value:" + value);
-          if (value.indexOf(filter) > -1) {
+          if (value.includes(filter)) {
             tr[i].style.display = "";
           } else {
             tr[i].style.display = "none";
@@ -620,7 +629,7 @@
         document.documentElement.classList.remove("dark");
         document.documentElement.classList.add("light");
         mode = "light";
-        button.innerText = "light [X]";
+        button.innerText = "light [x]";
       }
     }
   </script>
