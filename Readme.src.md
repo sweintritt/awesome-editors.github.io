@@ -1,7 +1,11 @@
 Awesome Editors
 ================
 
+<div style="text-align: center;">
+
 ![Icon](./icon_256.png)
+
+</div>
 
 A curated list of awesome editors ranging from simple like nano to full blown IDE like IntelliJ.
 
@@ -12,9 +16,7 @@ the language it is written in.
 ![Screenshot](./screenshot.png)
 
 ---
-
-- [vim](https://www.vim.org/) - One of the two classic highly configurable and extensible terminal based text editors. <kbd>GPL-compatible</kbd>
-
+# Editors
 ---
 
 [Code icon](https://icons8.com/icon/JFVPkIT8_8bo/code)
