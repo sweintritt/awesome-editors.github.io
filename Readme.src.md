@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./readme.css"/>
+
 Awesome Editors
 ================
 
@@ -19,6 +21,6 @@ the language it is written in.
 # Editors
 ---
 
-[Code icon](https://icons8.com/icon/JFVPkIT8_8bo/code)
+[Code icon](https://www.flaticon.com/free-icons/code)
 created by
-[Smashicons](https://www.flaticon.com/free-icons/code)
+[Smashicons](https://www.flaticon.com/authors/smashicons)

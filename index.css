@@ -1,0 +1,129 @@
+:root,
+:root.light {
+    --color-bg: #ddd;
+    --color-fg: #222;
+    --color-header: seagreen;
+    --color-table-header-bg: #ccc;
+    --color-table-header-fg: cadetblue;
+    --color-search-bg: #ddd;
+    --color-search-fg: darkcyan;
+    --color-search-border: #666;
+    --color-table-hover: #ccc;
+    --color-link: indianred;
+}
+
+:root.dark {
+    --color-bg: #222;
+    --color-fg: #ddd;
+    --color-header: lightgreen;
+    --color-table-header-bg: #444;
+    --color-table-header-fg: lightblue;
+    --color-search-bg: #222;
+    --color-search-fg: lightblue;
+    --color-search-border: #666;
+    --color-table-hover: #333;
+    --color-link: indianred;
+}
+
+body {
+    color: var(--color-fg);
+    background-color: var(--color-bg);
+    font-family: monospace;
+    font-size: 1.15em;
+}
+
+table {
+    border-collapse: collapse;
+    grid-template-columns: auto auto auto;
+    border: .2em solid #555;
+    padding: 1.5em;
+    margin: 1em;
+}
+
+#header {
+    padding: 1em;
+    margin: 1em;
+    border: .2em solid #555;
+    text-align: left;
+    color: var(--color-table-header-fg);
+    background-color: var(--color-table-header-bg);
+    font-weight: bold;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 1.15em;
+}
+
+th {
+    color: var(--color-table-header-fg);
+    background-color: var(--color-table-header-bg);
+    font-weight: bold;
+}
+
+#lightswitch {
+    padding: 1em;
+    float: right;
+    font-weight: normal;
+    text-align: center;
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+#lightswitch:hover {
+    background-color: var(--color-table-hover);
+}
+
+tr:hover {
+    background-color: var(--color-table-hover);
+}
+
+#title {
+    color: var(--color-header);
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+@media only screen and (max-width: 1325px) {
+    .optional1 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 885px) {
+    .optional2 {
+        display: none;
+    }
+}
+
+#search {
+    width: 45%;
+    padding: 5px;
+    background-color: var(--color-search-bg);
+    color: var(--color-search-fg);
+    font-weight: bold;
+    border: 2px solid var(--color-search-border);
+}
+
+#footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#icon {
+    float: left;
+    height: 5em;
+    margin-right: 1em;
+    margin-top: 1em;
+}
