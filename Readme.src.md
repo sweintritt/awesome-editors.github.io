@@ -11,7 +11,7 @@ Awesome Editors
 
 A curated list of awesome editors ranging from simple like nano to full blown IDE like IntelliJ.
 
-Visit the  [website](https://sweintritt.github.io/awesome-editors.github.io/) to search and
+Visit the  [website](https://sweintritt.github.io/awesome-editors/) to search and
 filter editors more easily and to get more information about each editor. Like license or
 the language it is written in.
 
