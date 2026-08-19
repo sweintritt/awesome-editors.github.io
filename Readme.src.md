@@ -3,7 +3,7 @@
 Awesome Editors
 ================
 
-<div style="text-align: center;">
+<div align="center">
 
 ![Icon](./icon_256.png)
 
