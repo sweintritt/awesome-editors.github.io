@@ -10,11 +10,19 @@ def get_editors():
 
 editors = get_editors()
 
+def kbd(value):
+    style = "font-size: 0.75em;" \
+        "font-family: monospace;" \
+        "color: white;" \
+        "background-color: rgb(0, 96, 96);" \
+        "margin: 5px;"
+    return "<kbd style=\"" + style + "\">"+ value + "</kbd>"
+
 list = ""
 for editor in editors:
     list += "- [" + editor["name"] + "](" + editor["link"] + ") - "
     list += editor["description"] 
-    list += "<kbd>" + editor["license"] + "</kbd>"
+    list += kbd(editor["license"])
     list += "\n"
 
 with open("./Readme.src.md", "r") as file:
