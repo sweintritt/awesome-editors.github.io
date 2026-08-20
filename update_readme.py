@@ -1,4 +1,5 @@
 import json
+from urllib.parse import quote
 
 def get_editors():
     with open("./editors.js", "r") as file:
@@ -10,19 +11,18 @@ def get_editors():
 
 editors = get_editors()
 
-def kbd(value):
-    style = "font-size: 0.75em;" \
-        "font-family: monospace;" \
-        "color: white;" \
-        "background-color: rgb(0, 96, 96);" \
-        "margin: 5px;"
-    return "<kbd style=\"" + style + "\">"+ value + "</kbd>"
+def shields_component(value):
+    value = value.replace("-", "--").replace("_", "__")
+    return quote(value, safe="")
 
 list = ""
 for editor in editors:
+    license = editor["license"]
+    badge_license = shields_component(license)
     list += "- [" + editor["name"] + "](" + editor["link"] + ") - "
-    list += editor["description"] 
-    list += kbd(editor["license"])
+    list += editor["description"]
+    list += f"![License: {license}]"
+    list += f"(https://img.shields.io/badge/license-{badge_license}-006060)"
     list += "\n"
 
 with open("./Readme.src.md", "r") as file:
