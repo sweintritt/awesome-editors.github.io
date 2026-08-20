@@ -15,18 +15,19 @@ def shields_component(value):
     value = value.replace("-", "--").replace("_", "__")
     return quote(value, safe="")
 
-list = ""
+table = "|Name|Description|License|\n"
+table += "|--|--|--|\n"
 for editor in editors:
     license = editor["license"]
     badge_license = shields_component(license)
-    list += "- [" + editor["name"] + "](" + editor["link"] + ") - "
-    list += editor["description"]
-    list += f"![License: {license}]"
-    list += f"(https://img.shields.io/badge/license-{badge_license}-006060)"
-    list += "\n"
+    table += "| [" + editor["name"] + "](" + editor["link"] + ") "
+    table += "| " + editor["description"]
+    table += f"| ![License: {license}]"
+    table += f"(https://img.shields.io/badge/license-{badge_license}-006060)"
+    table += " |\n"
 
 with open("./Readme.src.md", "r") as file:
     content = file.read();
-    content = content.replace("# Editors", list)
+    content = content.replace("# Editors", table)
     with open("./Readme.md", "w") as out:
         out.write(content)
